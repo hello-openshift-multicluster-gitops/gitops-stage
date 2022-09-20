@@ -1,15 +1,15 @@
-# GitOps Configurations for Dev Cluster
+# GitOps Configurations for Stage Cluster
 
-This repo contains Argo CD configurations for all applications on the dev
+This repo contains Argo CD configurations for all applications on the stage
 cluster. It is a Helm chart which deploys Namespaces, AppProjects, and
 Applications, based on configurations in values.yaml.
 
-This repo is continuously pushed by ACM to the dev cluster.
+This repo is continuously pushed by ACM to the stage cluster.
 
 ## Deploying
 
 This will deploy an ACM Application (Subscription and other required objects)
-on the hub cluster, which will continuously deploy this repo to the dev
+on the hub cluster, which will continuously deploy this repo to the stage
 cluster:
 
 ```bash

@@ -7,10 +7,10 @@
 set -e
 
 # Name of this GitOps Helm chart. Recommended: "gitops-<clustername>"
-CHART_NAME="gitops-dev"
+CHART_NAME="gitops-stage"
 
 # URL to this repo. Should end in ".git"
-REPO_URL="https://github.com/hello-world-gitops/gitops-dev.git"
+REPO_URL="https://github.com/hello-world-gitops/gitops-stage.git"
 
 oc create -f - << EOF
 apiVersion: app.k8s.io/v1beta1

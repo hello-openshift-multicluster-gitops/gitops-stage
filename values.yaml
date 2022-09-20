@@ -1,46 +1,46 @@
 appProjects:
     # Name will be used for the Argo CD AppProject and the Namespace the
     # applications will be deployed into
-  - name: theme-park-api-dev
+  - name: theme-park-api-stage
 
     # Description for the project
-    description: "Development deployment of Theme Park API"
+    description: "Staging deployment of Theme Park API"
 
     # Display name for the project
-    displayName: "Theme Park API - Dev"
+    displayName: "Theme Park API - Stage"
 
     # URL to a Git repo with application Helm charts for this project. This URL
     # should end in ".git"
     gitUrl: 'https://github.com/RyanMillerC/openshift-path-based-routing.git'
 
     # Git branch to pull charts from. Default: "main"
-    gitBranch: dev
+    gitBranch: main
 
     # Helm values file to use relative to each helm chart. Default: "values.yaml"
-    valuesFile: dev.values.yaml
+    valuesFile: stage.values.yaml
 
     # List of applications to deploy into the project
     applications:
         # Name of the application. THIS MUST BE UNIQUE! Even if deployed into a
         # different project, Argo CD Application names must be unique
-      - name: hershey-park-dev
+      - name: hershey-park-stage
 
         # Path inside the project gitUrl to the Helm chart. Use "." if the
         # chart is in the root of the repo. Use a relative path otherwise
         gitPath: '.'
 
-      - name: kings-dominion-dev
+      - name: kings-dominion-stage
         gitPath: '.'
-      - name: six-flags-dev
+      - name: six-flags-stage
         gitPath: '.'
 
   # Only required options are provided in this block
-  - name: theme-park-api-test
+  - name: theme-park-api-uat
     gitUrl: 'https://github.com/RyanMillerC/openshift-path-based-routing.git'
     applications:
-      - name: hershey-park-test
+      - name: hershey-park-uat
         gitPath: '.'
-      - name: kings-dominion-test
+      - name: kings-dominion-uat
         gitPath: '.'
-      - name: six-flags-test
+      - name: six-flags-uat
         gitPath: '.'
