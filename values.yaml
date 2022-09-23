@@ -11,7 +11,7 @@ appProjects:
 
     # URL to a Git repo with application Helm charts for this project. This URL
     # should end in ".git"
-    gitUrl: 'https://github.com/RyanMillerC/openshift-path-based-routing.git'
+    gitUrl: "https://github.com/RyanMillerC/theme-park-api-chart.git"
 
     # Git branch to pull charts from. Default: "main"
     gitBranch: main
@@ -27,20 +27,22 @@ appProjects:
 
         # Path inside the project gitUrl to the Helm chart. Use "." if the
         # chart is in the root of the repo. Use a relative path otherwise
-        gitPath: '.'
+        gitPath: './hershey-park'
 
       - name: kings-dominion-stage
-        gitPath: '.'
+        gitPath: './kings-dominion'
       - name: six-flags-stage
-        gitPath: '.'
+        gitPath: './six-flags'
 
-  # Only required options are provided in this block
   - name: theme-park-api-uat
+    description: "User Acceptance Testing deployment of Theme Park API"
+    displayName: "Theme Park API - UAT"
     gitUrl: 'https://github.com/RyanMillerC/openshift-path-based-routing.git'
+    valuesFile: uat.values.yaml
     applications:
       - name: hershey-park-uat
-        gitPath: '.'
+        gitPath: './hershey-park'
       - name: kings-dominion-uat
-        gitPath: '.'
+        gitPath: './kings-dominion'
       - name: six-flags-uat
-        gitPath: '.'
+        gitPath: './six-flags'
