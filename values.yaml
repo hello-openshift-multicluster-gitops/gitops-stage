@@ -37,7 +37,7 @@ appProjects:
   - name: theme-park-api-uat
     description: "User Acceptance Testing deployment of Theme Park API"
     displayName: "Theme Park API - UAT"
-    gitUrl: 'https://github.com/RyanMillerC/openshift-path-based-routing.git'
+    gitUrl: "https://github.com/RyanMillerC/theme-park-api-chart.git"
     valuesFile: uat.values.yaml
     applications:
       - name: hershey-park-uat
