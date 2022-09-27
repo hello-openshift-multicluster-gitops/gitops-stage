@@ -5,23 +5,34 @@ architecture.
 
 # GitOps Configurations for Stage Cluster
 
-This repo contains Argo CD configurations for all applications on the stage
-cluster. It is a Helm chart which deploys Namespaces, AppProjects, and
+This repo contains Argo CD configurations for all applications on the dev
+cluster. It contains a Helm chart which deploys Namespaces, AppProjects, and
 Applications, based on configurations in values.yaml.
 
-This repo is continuously pushed by ACM to the stage cluster.
+This repo is continuously deployed by ACM to the Stage cluster. The ACM
+subscription that deploys this repo is set up in [bootstrap].
 
-## Deploying
+```mermaid
+graph TD
+        ACM["Red Hat Advanced Cluster<br />Mangement (ACM) for Kubernetes"]
 
-This will deploy an ACM Application (Subscription and other required objects)
-on the hub cluster, which will continuously deploy this repo to the stage
-cluster:
+        subgraph hub [Hub Openshift Cluster]
+        ACM
+        end
 
-```bash
-./deploy.sh
+        subgraph stage [Stage OpenShift Cluster]
+        GitOpsStage["OpenShift GitOps<br />(Argo CD)"]
+        StageApplications["Staging Applications"]
+        end
+
+        ACM -- "Continously deploys<br />'gitops-stage' repo" --> GitOpsStage
+        GitOpsStage -- "Continously deploys<br />application repos" --> StageApplications
 ```
 
 ## Values
+
+Applications that this chart will deploy are configured in
+[values.yaml](values.yaml).
 
 | Value                                        | Required? | Description |
 | -------------------------------------------- | --------- | ----------- |
